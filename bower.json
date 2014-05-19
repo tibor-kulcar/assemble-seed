@@ -1,0 +1,20 @@
+{
+  "name": "assemble-seed",
+  "version": "0.1.0",
+  "homepage": "https://github.com/tibor-kulcar/assemble-seed",
+  "authors": [
+    "Tibor Kulcar <kulcar.tibor@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "build/static/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  }
+}

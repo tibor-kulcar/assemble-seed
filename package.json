@@ -1,0 +1,16 @@
+{
+    "name": "assemble-seed",
+    "version": "0.1.0",
+    "authors": [
+        "Tibor Kulcar <kulcar.tibor@gmail.com>"
+    ],
+    "private": false,
+    "dependencies": {
+        "grunt": "latest",
+        "assemble": "latest",
+        "grunt-sync": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-less": "latest",
+        "grunt-contrib-coffee": "latest"
+    }
+}
