@@ -1,6 +1,6 @@
 # assemble-seed
 
-Scaffold project for static sites generation using [assemble.io](http://assemble.io/).
+Scaffold project to generate static sites using [assemble.io](http://assemble.io/).
 
 ## Dependencies
 * git
