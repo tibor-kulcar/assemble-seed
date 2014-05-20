@@ -1,6 +1,6 @@
 # assemble-seed
 
-Scaffold project to generate static sites using [assemble.io](http://assemble.io/), [less](http://lesscss.org/) and [coffescript](http://coffeescript.org/)
+Scaffold project to generate static sites using [assemble.io](http://assemble.io/), [less](http://lesscss.org/), [coffescript](http://coffeescript.org/) and [twitter bootstrap](http://getbootstrap.com/)
 
 ## Dependencies
 * [git](http://git-scm.com/)
