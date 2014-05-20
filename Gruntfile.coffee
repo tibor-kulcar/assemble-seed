@@ -48,11 +48,18 @@ module.exports = (grunt) ->
                 files: ["src/static/coffee/*.coffee"]
                 tasks: "coffee"
 
+        connect:
+            server:
+              options:
+                port: 8000
+                base: 'build'
+      
     grunt.loadNpmTasks "assemble"
     grunt.loadNpmTasks "grunt-sync"
     grunt.loadNpmTasks "grunt-contrib-coffee"
     grunt.loadNpmTasks "grunt-contrib-less"
     grunt.loadNpmTasks "grunt-contrib-watch"
+    grunt.loadNpmTasks "grunt-contrib-connect"
 
     grunt.registerTask "default", [
         "build"
@@ -67,5 +74,6 @@ module.exports = (grunt) ->
 
     grunt.registerTask "dev", [
         "build"
+        "connect"
         "watch"
     ]

@@ -1,16 +1,22 @@
 {
     "name": "assemble-seed",
     "version": "0.1.0",
+    "description": "Scaffold project for static sites generation using assemble.io",
     "authors": [
         "Tibor Kulcar <kulcar.tibor@gmail.com>"
     ],
     "private": false,
     "dependencies": {
         "grunt": "latest",
+        "bower": "latest",
         "assemble": "latest",
         "grunt-sync": "latest",
         "grunt-contrib-watch": "latest",
         "grunt-contrib-less": "latest",
-        "grunt-contrib-coffee": "latest"
+        "grunt-contrib-coffee": "latest",
+        "grunt-contrib-connect": "latest"
+    },
+    "scripts": {
+        "postinstall": "bower install"
     }
 }
