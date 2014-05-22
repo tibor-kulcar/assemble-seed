@@ -19,6 +19,7 @@ module.exports = (grunt) ->
                 partials: ["src/templates/partials/*.hbs"]
                 layoutdir: "src/templates/layouts"
                 layout: "default.hbs"
+                data: ['src/data/**/*.yml', 'package.json']
 
             site:
                 files:
