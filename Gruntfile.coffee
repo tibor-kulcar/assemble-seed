@@ -63,6 +63,11 @@ module.exports = (grunt) ->
               options:
                 port: 3000
                 base: 'build'
+
+        githubPages:
+            target:
+                src: 'build'
+
       
     grunt.loadNpmTasks 'assemble'
     grunt.loadNpmTasks 'grunt-sync'
@@ -70,6 +75,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-less'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-connect'
+    grunt.loadNpmTasks 'grunt-github-pages'
 
     grunt.registerTask 'default', [
         'build'
@@ -87,3 +93,6 @@ module.exports = (grunt) ->
         'connect'
         'watch'
     ]
+
+    grunt.registerTask 'gh_pages', ['githubPages:target']
+    

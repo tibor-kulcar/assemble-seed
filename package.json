@@ -4,6 +4,10 @@
   "description": "Scaffold project for static sites generation using assemble.io",
   "author": "Tibor Kulčár <kulcar.tibor@gmail.com>",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tibor-kulcar/assemble-seed"
+  },
   "dependencies": {
     "assemble": "^0.4.42",
     "grunt": "^0.4.5",
@@ -11,6 +15,7 @@
     "grunt-contrib-connect": "^0.8.0",
     "grunt-contrib-less": "^0.11.4",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-github-pages": "0.0.4",
     "grunt-sync": "^0.2.0"
   },
   "scripts": {
