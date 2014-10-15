@@ -1,0 +1,13 @@
+buttons:
+    button01: 
+        label: assemble.io
+        class: success
+        url: "http://assemble.io/"
+    button02: 
+        label: gruntjs
+        class: danger
+        url: "http://gruntjs.com/"
+    button03: 
+        label: node.js
+        class: primary
+        url: "http://nodejs.org/"

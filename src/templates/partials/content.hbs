@@ -1,0 +1,9 @@
+<p class="lead">
+    {{#i18n "content" }}{{/i18n}} 
+</p>
+<p>
+    {{#each content.buttons }}
+        <a class="btn btn-lg btn-{{ class }}" href="{{ url }}" target="_blank">{{ label }}</a>
+    {{/each}}
+    
+</p>
