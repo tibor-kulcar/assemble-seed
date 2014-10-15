@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ language }}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> {{ title }} </title>
+    <title> {{#i18n "title" }}{{/i18n}} </title>
 
     <!-- Bootstrap -->
-    <link href="static/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles -->
-    <link href="static/css/app.css" rel="stylesheet">
+    <link href="{{ assets }}/css/app.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,17 +21,34 @@
 
   </head>
   <body>
-	<div class="container">
-
-  		{{> body }}
-	
-	</div>
-
+  	<div class="container text-center">
+      <ul class="nav nav-tabs" role="tablist">
+        {{#is language "en"}}
+        <li class="active">
+          <a href=".">EN</a>
+        </li>
+        <li>
+          <a href="sk/">SK</a>
+        </li>
+        {{/is}}
+        {{#is language "sk"}}
+        <li>
+          <a href="../">EN</a>
+        </li>
+        <li class="active">
+          <a href=".">SK</a>
+        </li>
+        {{/is}}
+      </ul>
+      <div class="jumbotron">
+    		{{> body }}
+      </div>
+  	</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="static/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>    
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="static/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <!-- Custom App js code -->
-    <script src="static/js/app.js"></script>
+    <script src="{{ assets }}/js/app.js"></script>
   </body>
 </html>

@@ -1,80 +1,89 @@
 module.exports = (grunt) ->
     # Project configuration.
     grunt.initConfig
-        pkg: grunt.file.readJSON("package.json")
+        pkg: grunt.file.readJSON('package.json')
         sync:
             main:
                 files: [
-                    cwd: "src/static"
+                    cwd: 'src/assets'
                     src: [
-                        "img/**"
-                    ]
-                    dest: "build/static"
+                            'img/**',
+                            'fonts/**'
+                        ]
+                    dest: 'build/assets'
                 ]
-                verbose: true # Display log messages when copying files
-
-        assemble:
-            options:
-                flatten: true
-                partials: ["src/templates/partials/*.hbs"]
-                layoutdir: "src/templates/layouts"
-                layout: "default.hbs"
-                data: ['src/data/**/*.yml', 'package.json']
-
-            site:
-                files:
-                    "build/": ["src/templates/pages/*.hbs"]
-
-        coffee:
-            default:
-                expand: true
-                cwd: "src/static/coffee/"
-                src: ["**/*.coffee"]
-                dest: "build/static/js/"
-                ext: ".js"
+                verbose: true
 
         less:
             style:
                 files:
-                    "build/static/css/app.css": "src/static/less/app.less"
+                    'build/assets/css/app.css': 'src/assets/less/app.less'
+        
+        coffee:
+            compile:
+                files:
+                    'build/assets/js/app.js': 'src/assets/coffee/app.coffee'
+
+        assemble:
+            options:
+                flatten: true
+                partials: ['src/templates/partials/*.hbs']
+                layoutdir: 'src/templates/layouts'
+                layout: 'default.hbs'
+                assets: 'assets'
+                data: ['src/i18n/**/*.yml']
+
+            site:
+                files: [
+                    {
+                        expand: true, 
+                        cwd: 'src/templates/pages/', 
+                        src: '**/*.hbs', 
+                        dest: 'build/', 
+                        ext: '.html'
+                    }
+                ]
 
         watch:
             hbs:
-                files: ["src/**/*.hbs"]
-                tasks: "assemble"
+                files: ['src/**/*.hbs']
+                tasks: 'assemble'
             less:
-                files: ["src/static/less/*.less"]
-                tasks: "less"
+                files: ['src/assets/less/*.less']
+                tasks: 'less'
             coffee:
-                files: ["src/static/coffee/*.coffee"]
-                tasks: "coffee"
+                files: ['src/assets/coffee/*.coffee']
+                tasks: 'coffee'
+            data:
+                files: ['src/i18n/*.*']
+                tasks: 'assemble'
 
         connect:
             server:
               options:
-                port: 8000
+                port: 3000
                 base: 'build'
       
-    grunt.loadNpmTasks "assemble"
-    grunt.loadNpmTasks "grunt-sync"
-    grunt.loadNpmTasks "grunt-contrib-coffee"
-    grunt.loadNpmTasks "grunt-contrib-less"
-    grunt.loadNpmTasks "grunt-contrib-watch"
-    grunt.loadNpmTasks "grunt-contrib-connect"
+    grunt.loadNpmTasks 'assemble'
+    grunt.loadNpmTasks 'grunt-sync'
+    grunt.loadNpmTasks 'grunt-contrib-coffee'
+    grunt.loadNpmTasks 'grunt-contrib-less'
+    grunt.loadNpmTasks 'grunt-contrib-watch'
+    grunt.loadNpmTasks 'grunt-contrib-connect'
 
-    grunt.registerTask "default", [
-        "build"
+    grunt.registerTask 'default', [
+        'build'
     ]
 
-    grunt.registerTask "build", [
-        "less"
-        "coffee"
-        "sync"
-        "assemble"
+    grunt.registerTask 'build', [
+        'less'
+        'coffee'
+        'sync'
+        'assemble'
     ]
 
-    grunt.registerTask "dev", [
-        "build"
-        "connect"
-        "watch"
+    grunt.registerTask 'dev', [
+        'build'
+        'connect'
+        'watch'
     ]
