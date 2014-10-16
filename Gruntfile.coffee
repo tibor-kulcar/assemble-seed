@@ -78,7 +78,7 @@ module.exports = (grunt) ->
             lftp:
                 command: 'lftp -e "mirror -R ./build .; quit" -u username,password host'
             rsync:
-                command: 'rsync -vac --progress --delete build/ hostalias:path'
+                command: 'rsync -vac --progress --delete build/ username@remote_host:remote_path'
       
     grunt.loadNpmTasks 'assemble'
     grunt.loadNpmTasks 'grunt-sync'
