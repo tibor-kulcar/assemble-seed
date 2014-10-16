@@ -17,12 +17,12 @@ module.exports = (grunt) ->
         less:
             style:
                 files:
-                    'build/assets/css/app.css': 'src/assets/less/app.less'
+                    'build/assets/css/main.css': 'src/assets/less/main.less'
         
         coffee:
             compile:
                 files:
-                    'build/assets/js/app.js': 'src/assets/coffee/app.coffee'
+                    'build/assets/js/main.js': 'src/assets/coffee/main.coffee'
 
         assemble:
             options:
@@ -31,7 +31,10 @@ module.exports = (grunt) ->
                 layoutdir: 'src/templates/layouts'
                 layout: 'default.hbs'
                 assets: 'build/assets'
-                data: 'src/i18n/**/*.yml'
+                data: [
+                        'src/i18n/**/*.yml',
+                        'src/data/**/*yml'
+                    ]
 
             site:
                 files: [
