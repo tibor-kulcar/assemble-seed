@@ -74,7 +74,9 @@ module.exports = (grunt) ->
                 port: 3000
                 base: 'build'
 
-
+        shell:
+            lftp_deploy:
+                command: 'lftp -e "mirror -R ./build .; quit" -u username,password host'
       
     grunt.loadNpmTasks 'assemble'
     grunt.loadNpmTasks 'grunt-sync'
@@ -83,6 +85,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-connect'
     grunt.loadNpmTasks 'grunt-gh-pages'
+    grunt.loadNpmTasks 'grunt-shell'
 
     grunt.registerTask 'default', [
         'build'
@@ -101,4 +104,12 @@ module.exports = (grunt) ->
         'watch'
     ]
 
-    grunt.registerTask 'gh_pages', ['gh-pages']
+    grunt.registerTask 'gh_pages', [
+        'build'
+        'gh-pages'
+    ]
+
+    grunt.registerTask 'ftp_deploy', [
+        'build'
+        'shell:lftp_deploy'
+    ]
