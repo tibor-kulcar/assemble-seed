@@ -27,11 +27,11 @@ module.exports = (grunt) ->
         assemble:
             options:
                 flatten: true
-                partials: ['src/templates/partials/*.hbs']
+                partials: 'src/templates/partials/*.hbs'
                 layoutdir: 'src/templates/layouts'
                 layout: 'default.hbs'
-                assets: 'assets'
-                data: ['src/i18n/**/*.yml']
+                assets: 'build/assets'
+                data: 'src/i18n/**/*.yml'
 
             site:
                 files: [
@@ -43,6 +43,8 @@ module.exports = (grunt) ->
                         ext: '.html'
                     }
                 ]
+                options:
+                    assets: 'build/assets'
 
         watch:
             hbs:
@@ -58,15 +60,17 @@ module.exports = (grunt) ->
                 files: ['src/i18n/*.*']
                 tasks: 'assemble'
 
+        'gh-pages':
+            options:
+                base: 'build'
+            src: '**/*'
+
         connect:
             server:
               options:
                 port: 3000
                 base: 'build'
 
-        githubPages:
-            target:
-                src: 'build'
 
       
     grunt.loadNpmTasks 'assemble'
@@ -75,7 +79,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-less'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-connect'
-    grunt.loadNpmTasks 'grunt-github-pages'
+    grunt.loadNpmTasks 'grunt-gh-pages'
 
     grunt.registerTask 'default', [
         'build'
@@ -94,5 +98,4 @@ module.exports = (grunt) ->
         'watch'
     ]
 
-    grunt.registerTask 'gh_pages', ['githubPages:target']
-    
+    grunt.registerTask 'gh_pages', ['gh-pages']
