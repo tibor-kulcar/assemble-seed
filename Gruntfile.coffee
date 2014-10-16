@@ -75,8 +75,10 @@ module.exports = (grunt) ->
                 base: 'build'
 
         shell:
-            lftp_deploy:
+            lftp:
                 command: 'lftp -e "mirror -R ./build .; quit" -u username,password host'
+            rsync:
+                command: 'rsync -vac --progress --delete build/ hostalias:path'
       
     grunt.loadNpmTasks 'assemble'
     grunt.loadNpmTasks 'grunt-sync'
@@ -111,5 +113,10 @@ module.exports = (grunt) ->
 
     grunt.registerTask 'ftp_deploy', [
         'build'
-        'shell:lftp_deploy'
+        'shell:lftp'
+    ]
+
+    grunt.registerTask 'rsync_deploy', [
+        'build'
+        'shell:rsync'
     ]
